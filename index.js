@@ -106,7 +106,14 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-class Lambdasian {}
+class Lambdasian {
+	constructor(args) {
+		(this.name = args.name), (this.age = args.age), (this.location = args.location);
+	}
+	speak() {
+		return `Hello my name is ${this.name}, I am from ${this.location}.`;
+	}
+}
 
 /*
   TASK 4
