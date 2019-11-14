@@ -83,7 +83,6 @@ class Car {
 	drive(distance) {
 		let fuelUsed = distance / this.milesPerGallon;
 		let maxDistance = this.tank * this.milesPerGallon;
-		let distanceTravelled = maxDistance - distance;
 		this.odometer = +distance;
 		this.tank = this.tank - fuelUsed;
 		if (maxDistance < distance) {
@@ -137,10 +136,10 @@ class Instructor extends Lambdasian {
 	demo(subject) {
 		return 'Today, we are learning about ' + subject;
 	}
-	grade(student, subject) {
-		return `${student.name} reveives a perfect score on ${subject}`;
+	grade(Student, subject) {
+		return `${Student.name} reveives a perfect score on ${subject}`;
 	}
-	assignmentGrader() {
+	assignmentGrader(Student) {
 		let min = -50;
 		let max = 50;
 		Student.grade = Student.grade + Math.floor(Math.random() * (max - min + 1) + min);
@@ -163,14 +162,6 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-/*
-  STRETCH PROBLEM (no tests!)
-    - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
-    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
-    - Add a graduate method to a student.
-      + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
-      + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
-*/
 class Student extends Lambdasian {
 	constructor(args) {
 		super(args);
