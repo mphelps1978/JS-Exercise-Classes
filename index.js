@@ -75,15 +75,23 @@ class Person {
 
 class Car {
 	constructor(model, milesPerGallon) {
-		(this.model = model), (this.milesPerGallon = milesPerGallon),(this.tank = 0), (this.odometer = 0);
+		(this.model = model), (this.milesPerGallon = milesPerGallon), (this.tank = 0), (this.odometer = 0);
 	}
 	fill(gallons) {
-    this.tank += gallons;
-  }
-  drive(distance) {
-    this.odometer = + distance;
-
-}
+		this.tank += gallons;
+	}
+	drive(distance) {
+		let fuelUsed = distance / this.milesPerGallon;
+		let maxDistance = this.tank * this.milesPerGallon;
+		let distanceTravelled = maxDistance - distance;
+		this.odometer = +distance;
+		this.tank = this.tank - fuelUsed;
+		if (maxDistance < distance) {
+			this.tank = 0;
+			this.odometer = maxDistance;
+			return 'I ran out of gas after ' + maxDistance + ' miles.';
+		}
+	}
 }
 
 /*
